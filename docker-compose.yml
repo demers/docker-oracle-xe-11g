@@ -1,0 +1,18 @@
+version: '2.1'
+
+services:
+  oracle11g:
+    build: .
+    image: oracle11g
+    container_name: oracle11g
+    volumes:
+      - "data_work:/home/ubuntu/work"
+      - "/home/demers/share:/home/ubuntu/share"
+    #restart: always
+    ports:
+      - "22:22"
+      - "49161:1521"
+    network_mode: "host"
+
+volumes:
+  data_work:
