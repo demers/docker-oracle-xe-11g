@@ -76,10 +76,39 @@ EXPOSE 22
 EXPOSE 1521
 EXPOSE 8080
 
-#CMD /usr/sbin/startup.sh && tail -f /dev/null
-# Start SSHD server...
-#CMD ["/usr/sbin/sshd", "-D"]
-#CMD /usr/sbin/startup.sh; /usr/sbin/sshd -D
+# Installation Java 13
+# http://ubuntuhandbook.org/index.php/2019/10/how-to-install-oracle-java-13-in-ubuntu-18-04-16-04-19-04/
+RUN add-apt-repository ppa:linuxuprising/java
+RUN apt-get update
+
+
+#RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 \
+    #select true | /usr/bin/debconf-set-selections
+RUN echo oracle-java13-installer shared/accepted-oracle-license-v1-2 \
+    select true | sudo /usr/bin/debconf-set-selections
+
+# Alternatives... pris de https://www.linuxuprising.com/2019/09/install-oracle-java-13-on-ubuntu-linux.html
+#RUN echo oracle-java13-installer shared/accepted-oracle-licence-v1-2 boolean true | sudo /usr/bin/debconf-set-selections
+RUN apt install -y oracle-java13-installer
+RUN apt install -y oracle-java13-set-default
+
+# Installation du pilote Java Oracle
+# https://www.codejava.net/java-se/jdbc/connect-to-oracle-database-via-jdbc
+ADD o.j /
+RUN mv -f /o.j /ojdbc6.jar
+RUN mkdir /home/ubuntu/classpath
+RUN mv -f /ojdbc6.jar /home/ubuntu/classpath/
+RUN chown -R ubuntu:ubuntu /home/ubuntu/classpath
+
+ADD JdbcOracleConnection.java /home/ubuntu/
+RUN chown -R ubuntu:ubuntu /home/ubuntu/JdbcOracleConnection.java
+
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-13-oracle/bin" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "export CLASSPATH=.:/usr/lib/jvm/java-13-oracle/lib:/home/ubuntu/classpath" >> ${WORKDIRECTORY}/.bash_profile
+
+#JAVA_HOME="/usr/lib/jvm/java-13-oracle/bin"
+#export JAVA_HOME
+#CLASSPATH=".:/usr/lib/jvm/java-13-oracle/lib:/home/ubuntu/classpath"
 
 ADD start.sh /
 RUN chmod +x /start.sh
