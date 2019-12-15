@@ -56,7 +56,7 @@ RUN echo "export PATH=\$ORACLE_HOME/bin:$PATH" >> ${WORKDIRECTORY}/.bash_profile
 
 RUN echo "export ORACLE_SID=XE" >> ${WORKDIRECTORY}/.bash_profile
 
-RUN echo "sleep 1; echo 'alter system disable restricted session;' | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus -s SYSTEM/oracle" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "echo 'Attendre quelques secondes...'; sleep 10; echo 'alter system disable restricted session;' | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus -s SYSTEM/oracle" >> ${WORKDIRECTORY}/.bash_profile
 
 RUN apt-get install -y rlwrap
 
@@ -64,7 +64,7 @@ RUN echo "alias sqlplus='rlwrap sqlplus'" >> ${WORKDIRECTORY}/.bash_profile
 RUN echo "alias sp='rlwrap sqlplus SYSTEM/oracle'" >> ${WORKDIRECTORY}/.bash_profile
 
 # Installation X11.
-RUN apt install -y xauth vim-gtk
+RUN apt install -y xauth vim-gtk nano
 #RUN apt install -y xorg
 
 RUN apt-get update
@@ -98,17 +98,36 @@ ADD o.j /
 RUN mv -f /o.j /ojdbc6.jar
 RUN mkdir /home/ubuntu/classpath
 RUN mv -f /ojdbc6.jar /home/ubuntu/classpath/
-RUN chown -R ubuntu:ubuntu /home/ubuntu/classpath
+RUN chown -R ubuntu:ubuntu ${WORKDIRECTORY}/classpath
 
 ADD JdbcOracleConnection.java /home/ubuntu/
 RUN chown -R ubuntu:ubuntu /home/ubuntu/JdbcOracleConnection.java
 
-RUN echo "export JAVA_HOME=/usr/lib/jvm/java-13-oracle/bin" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-13-oracle/" >> ${WORKDIRECTORY}/.bash_profile
 RUN echo "export CLASSPATH=.:/usr/lib/jvm/java-13-oracle/lib:/home/ubuntu/classpath" >> ${WORKDIRECTORY}/.bash_profile
 
-#JAVA_HOME="/usr/lib/jvm/java-13-oracle/bin"
-#export JAVA_HOME
-#CLASSPATH=".:/usr/lib/jvm/java-13-oracle/lib:/home/ubuntu/classpath"
+RUN echo "JAVA_HOME=/usr/lib/jvm/java-13-oracle/" >> /etc/environment
+RUN echo "CLASSPATH=.:/usr/lib/jvm/java-13-oracle/lib:/home/ubuntu/classpath" >> /etc/environment
+
+# Installation Python 3
+RUN apt install -y git python3 python3-pip python3-mock python3-tk
+# Mise à jour PIP
+RUN pip3 install --upgrade pip
+RUN pip3 install flake8
+RUN pip3 install flake8-docstrings
+RUN pip3 install pylint
+ENV PYTHONIOENCODING=utf-8
+
+RUN git clone https://github.com/pyenv/pyenv.git ${WORKDIRECTORY}/.pyenv
+RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ${WORKDIRECTORY}/.bash_profile
+RUN echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ${WORKDIRECTORY}/.bash_profile
+RUN echo 'eval "$(pyenv init -)"' >> ${WORKDIRECTORY}/.bash_profile
+
+RUN pip3 install cx_oracle
+
+RUN cd ${WORKDIRECTORY} \
+    && mkdir work \
+    && chown -R $USERNAME:$PASSWORD work .bash_profile .pyenv
 
 ADD start.sh /
 RUN chmod +x /start.sh
