@@ -1,4 +1,4 @@
-
+// Code de https://www.codejava.net/java-se/jdbc/connect-to-oracle-database-via-jdbc
 // Pour compiler et exécuter...
 // javac -cp /home/ubuntu/classpath/ojdbc6.jar:. JdbcOracleConnection.java
 // java -cp /home/ubuntu/classpath/ojdbc6.jar:. JdbcOracleConnection
