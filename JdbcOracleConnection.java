@@ -1,16 +1,14 @@
-package net.codejava.jdbc;
+
+// Pour compiler et exécuter...
+// javac -cp /home/ubuntu/classpath/ojdbc6.jar:. JdbcOracleConnection.java
+// java -cp /home/ubuntu/classpath/ojdbc6.jar:. JdbcOracleConnection
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- * This program demonstrates how to make database connection with Oracle
- * database server.
- * @author www.codejava.net
- *
- */
 public class JdbcOracleConnection {
 
     public static void main(String[] args) {
@@ -25,14 +23,14 @@ public class JdbcOracleConnection {
             Class.forName("oracle.jdbc.OracleDriver");
 
             // METHOD #1
-            String dbURL1 = "jdbc:oracle:thin:SYSTEM/oracle@localhost:1521:productDB";
+            String dbURL1 = "jdbc:oracle:thin:SYSTEM/oracle@localhost:1521:XE";
             conn1 = DriverManager.getConnection(dbURL1);
             if (conn1 != null) {
                 System.out.println("Connected with connection #1");
             }
 
             // METHOD #2
-            String dbURL2 = "jdbc:oracle:thin:@localhost:1521:productDB";
+            String dbURL2 = "jdbc:oracle:thin:@localhost:1521:XE";
             String username = "SYSTEM";
             String password = "oracle";
             conn2 = DriverManager.getConnection(dbURL2, username, password);
@@ -41,7 +39,8 @@ public class JdbcOracleConnection {
             }
 
             // METHOD #3
-            String dbURL3 = "jdbc:oracle:oci:@ProductDB";
+            //String dbURL3 = "jdbc:oracle:oci:@ProductDB";
+            String dbURL3 = "jdbc:oracle:thin:@localhost:1521:XE";
             Properties properties = new Properties();
             properties.put("user", "SYSTEM");
             properties.put("password", "oracle");
