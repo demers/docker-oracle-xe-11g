@@ -19,7 +19,7 @@ RUN apt-get update
 
 RUN apt install -y apt-utils
 
-RUN apt-get install -y vim-nox curl git
+RUN apt-get install -y vim-nox curl git nano
 
 # Install a basic SSH server
 RUN apt install -y openssh-server
@@ -56,16 +56,22 @@ RUN echo "export PATH=\$ORACLE_HOME/bin:$PATH" >> ${WORKDIRECTORY}/.bash_profile
 
 RUN echo "export ORACLE_SID=XE" >> ${WORKDIRECTORY}/.bash_profile
 
-RUN echo "echo 'Attendre quelques secondes...'; sleep 10; echo 'alter system disable restricted session;' | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus -s SYSTEM/oracle" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "echo 'Attendre 30 secondes...'; sleep 30; echo 'alter system disable restricted session;' | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus -s SYSTEM/oracle" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "grep -v 'Attendre' ~/.bash_profile > ~/.bash_profile" >> ${WORKDIRECTORY}/.bash_profile
 
+# Permet de garder un historique de la commande SQLPlus.
 RUN apt-get install -y rlwrap
 
+# Raccourcis de la commande SQLPlus
 RUN echo "alias sqlplus='rlwrap sqlplus'" >> ${WORKDIRECTORY}/.bash_profile
 RUN echo "alias sp='rlwrap sqlplus SYSTEM/oracle'" >> ${WORKDIRECTORY}/.bash_profile
 
+RUN echo "echo 'Notez que la commande sqlplus permet de démarrer SQLPlus.'" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "echo 'Le mot de passe de SYSTEM est oracle" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "echo 'La commande sp permet de se connecter automatiquement à SYSTEM/oracle.'" >> ${WORKDIRECTORY}/.bash_profile
+
 # Installation X11.
-RUN apt install -y xauth vim-gtk nano
-#RUN apt install -y xorg
+RUN apt install -y xauth vim-gtk
 
 RUN apt-get update
 RUN apt-get install -y build-essential cmake python3-dev
@@ -80,7 +86,6 @@ EXPOSE 8080
 # http://ubuntuhandbook.org/index.php/2019/10/how-to-install-oracle-java-13-in-ubuntu-18-04-16-04-19-04/
 RUN add-apt-repository ppa:linuxuprising/java
 RUN apt-get update
-
 
 #RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 \
     #select true | /usr/bin/debconf-set-selections
@@ -123,7 +128,12 @@ RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ${WORKDIRECTORY}/.bash_profile
 RUN echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ${WORKDIRECTORY}/.bash_profile
 RUN echo 'eval "$(pyenv init -)"' >> ${WORKDIRECTORY}/.bash_profile
 
+# Installation du pilote Oracle pour Python 3
 RUN pip3 install cx_oracle
+
+ADD oracleConnection.py /home/ubuntu/
+RUN chown -R ubuntu:ubuntu /home/ubuntu/oracleConnection.py
+
 
 RUN cd ${WORKDIRECTORY} \
     && mkdir work \
