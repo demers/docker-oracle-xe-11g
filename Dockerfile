@@ -19,6 +19,7 @@ RUN apt-get update
 
 RUN apt install -y apt-utils
 
+RUN apt-get update
 RUN apt-get install -y vim-nox curl git nano
 
 # Install a basic SSH server
