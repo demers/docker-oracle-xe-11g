@@ -4,7 +4,7 @@ Ce projet est basé sur sur https://github.com/wnameless/docker-oracle-xe-11g
 
 Voici les caractéristiques du conteneur contruit ici:
 
-- Ubuntu 18.04
+- Ubuntu 18.04+
 - Oracle Express Edition 11g Release 2
 - Le mot de passe `SYSTEM` et `SYS` est `oracle`
 - Accès SSH au conteneur (par Putty par exemple), nom d'utilisateur `ubuntu` et mot de passe `ubuntu`
@@ -19,9 +19,57 @@ Voici les caractéristiques du conteneur contruit ici:
 - Un programme Java test disponible à `/home/ubuntu/JdbcOracleConnection.java` (voir plus bas pour les exécuter)
 - Un programme Python 3 test disponible à `/home/ubuntu/oracleConnection.py` (voir plus bas pour les exécuter)
 
+# Préalables
+
+Vous devez avoir sur votre système:
+
+- Docker 17+
+- Docker compose 2+
+- Au moins 3,5 Go d'espace disque.
+
+# Comment installer ce projet Docker sur votre ordinateur
+
+Vous devez ouvrir une console Bash ou Powershell et exécuter:
+
+```
+git clone https://github.com/demers/docker-oracle-xe-11g.git
+
+cd docker-oracle-xe-11g
+
+docker-compose build
+
+docker-compose up -d
+```
+
+Vous pouvez vous connecter au conteneur par SSH.  Sous Linux, on tape
+
+```
+ssh -l ubuntu localhost
+```
+
+Pour arrêter temporairement le conteneur, on tape:
+
+```
+docker-compose stop
+```
+
+On redémarre le conteneur arrêté par:
+
+```
+docker-compose start
+```
+
+On détruit le conteneur par:
+
+```
+docker-compose down
+
+docker rmi oracle11g
+```
+
 # Comment se connecter à Oracle par SQLPlus
 
-Pour se connecter à Oracle, on tape simplement:
+Quand vous êtes connecté au conteneur, pour accéder à la console Oracle, on tape simplement:
 
 ```
 sqlplus
