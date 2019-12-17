@@ -1,6 +1,6 @@
 import cx_Oracle
 
-con = cx_Oracle.connect('pythonhol/welcome@127.0.0.1/orcl')
+con = cx_Oracle.connect('SYSTEM/oracle@localhost/XE')
 print (con.version)
 
 con.close()

@@ -57,8 +57,8 @@ RUN echo "export PATH=\$ORACLE_HOME/bin:$PATH" >> ${WORKDIRECTORY}/.bash_profile
 
 RUN echo "export ORACLE_SID=XE" >> ${WORKDIRECTORY}/.bash_profile
 
-RUN echo "echo 'Attendre 30 secondes...'; sleep 30; echo 'alter system disable restricted session;' | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus -s SYSTEM/oracle" >> ${WORKDIRECTORY}/.bash_profile
-RUN echo "grep -v 'Attendre' ~/.bash_profile > ~/.bash_profile" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "echo 'Attendre 30 secondes après le démarrage du serveur Oracle...'; sleep 30; echo 'alter system disable restricted session;' | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus -s SYSTEM/oracle" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "mv -f ~/.bash_profile .bash_profile.init; grep -v 'Attendre' ~/.bash_profile.init > ~/.bash_profile" >> ${WORKDIRECTORY}/.bash_profile
 
 # Permet de garder un historique de la commande SQLPlus.
 RUN apt-get install -y rlwrap
@@ -135,6 +135,8 @@ RUN pip3 install cx_oracle
 ADD oracleConnection.py /home/ubuntu/
 RUN chown -R ubuntu:ubuntu /home/ubuntu/oracleConnection.py
 
+RUN echo "export LD_LIBRARY_PATH=/u01/app/oracle/product/11.2.0/xe/lib/" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "export LD_LIBRARY_PATH=/u01/app/oracle/product/11.2.0/xe/lib/" >> /root/.bash_profile
 
 RUN cd ${WORKDIRECTORY} \
     && mkdir work \
