@@ -21,9 +21,50 @@ Voici les caractéristiques du conteneur contruit ici:
 
 # Comment se connecter à Oracle par SQLPlus
 
+Pour se connecter à Oracle, on tape simplement:
+
+```
+sqlplus
+```
+
+On peut aussi ajouter le nom d'utilisateur et mot de passe:
+
+```
+sqlplus SYSTEM/oracle
+```
+
+
+Si on veut se connecter directement au compte SYSTEM, on tape le raccourci
+(alias):
+
+```
+sp
+```
+
+Le programme `rlwrap` est utilisé pour obtenir un historique par la flèche vers
+le haut.
+
 # Comment tester le programme Java
 
+On compile le programme `JdbcOracleConnection.java`:
+
+```
+javac JdbcOracleConnection.java
+```
+On exécute le programme `JdbcOracleConnection`:
+
+```
+java -cp classpath/ojdbc6.jar:. JdbcOracleConnection
+```
+
 # Comment tester le programme Python 3
+
+Pour tester le programme `oracleConnection.py`, on exécute le code simplement
+comme suit:
+
+```
+python3 oracleConnection.py
+```
 
 # D'autres conteneurs Oracle disponibles officiellement
 

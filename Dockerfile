@@ -66,7 +66,7 @@ RUN echo "alias sp='rlwrap sqlplus SYSTEM/oracle'" >> ${WORKDIRECTORY}/.bash_pro
 
 RUN echo "echo ''" >> ${WORKDIRECTORY}/.bash_profile
 RUN echo "echo 'Notez que la commande sqlplus permet de démarrer SQLPlus.'" >> ${WORKDIRECTORY}/.bash_profile
-RUN echo "echo 'Le mot de passe de SYSTEM est oracle" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "echo 'Le mot de passe de SYSTEM et SYS sont oracle'" >> ${WORKDIRECTORY}/.bash_profile
 RUN echo "echo 'La commande sp permet de se connecter automatiquement à SYSTEM/oracle.'" >> ${WORKDIRECTORY}/.bash_profile
 
 # Installation X11.
