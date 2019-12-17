@@ -1,4 +1,4 @@
-# docker-oracle-xe-11g
+# Description du dépôt Git demers/docker-oracle-xe-11g
 
 Ce projet est basé sur sur https://github.com/wnameless/docker-oracle-xe-11g
 
@@ -16,11 +16,15 @@ Voici les caractéristiques du conteneur contruit ici:
 - Pilote `ojdbc6.jar` installé pour permettre un accès aux BD Oracle par un programme Java
 - Langage Python 3 installé
 - Pilote Oracle pour Python 3 `cx_oracle`
-- Un programme Java test disponible à `/home/ubuntu/JdbcOracleConnection.java`
-- Un programme Python 3 test disponible à `/home/ubuntu/oracleConnection.py`
--
+- Un programme Java test disponible à `/home/ubuntu/JdbcOracleConnection.java` (voir plus bas pour les exécuter)
+- Un programme Python 3 test disponible à `/home/ubuntu/oracleConnection.py` (voir plus bas pour les exécuter)
 
+# Comment se connecter à Oracle par SQLPlus
 
-# D'autres conteneurs Oracle
+# Comment tester le programme Java
+
+# Comment tester le programme Python 3
+
+# D'autres conteneurs Oracle disponibles officiellement
 
 Voir la liste des conteneurs de produits BD Oracle à https://github.com/oracle/docker-images
