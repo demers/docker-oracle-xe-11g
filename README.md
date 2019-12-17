@@ -1,6 +1,6 @@
 # Description du dépôt Git demers/docker-oracle-xe-11g
 
-Ce projet est basé sur sur https://github.com/wnameless/docker-oracle-xe-11g
+Ce projet est basé sur https://github.com/wnameless/docker-oracle-xe-11g
 
 Voici les caractéristiques du conteneur contruit ici:
 
@@ -117,3 +117,7 @@ python3 oracleConnection.py
 # D'autres conteneurs Oracle disponibles officiellement
 
 Voir la liste des conteneurs de produits BD Oracle à https://github.com/oracle/docker-images
+
+# Projet C# Core et Oracle 11g
+
+Voir https://github.com/ericmend/oracleClientCore-2.0
