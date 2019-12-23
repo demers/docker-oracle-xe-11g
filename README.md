@@ -18,6 +18,7 @@ Voici les caractéristiques du conteneur contruit ici:
 - Pilote Oracle pour Python 3 `cx_oracle`
 - Un programme Java test disponible à `/home/ubuntu/JdbcOracleConnection.java` (voir plus bas pour les exécuter)
 - Un programme Python 3 test disponible à `/home/ubuntu/oracleConnection.py` (voir plus bas pour les exécuter)
+- MongoDB et le client Mongo
 
 # Préalables
 
