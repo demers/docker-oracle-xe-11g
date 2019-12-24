@@ -50,8 +50,6 @@ git clone https://github.com/demers/docker-oracle-xe-11g.git
 
 cd docker-oracle-xe-11g
 
-docker-compose build
-
 docker-compose up -d
 ```
 
