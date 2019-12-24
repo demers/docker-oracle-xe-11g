@@ -2,7 +2,8 @@ version: '2.1'
 
 services:
   oracle11g:
-    image: demers/docker-oracle-xe-11g
+    build: .
+    image: oracle11g
     container_name: oracle11g
     volumes:
       - "data_work:/home/ubuntu/work"
