@@ -59,6 +59,9 @@ Vous pouvez vous connecter au conteneur par SSH.  Sous Linux, on tape
 ssh -l ubuntu localhost
 ```
 
+Sous Windows, vous devez installer [Putty](https://www.putty.org/) et utiliser
+le nom du serveur localhost pour le port 22.
+
 Pour arrêter temporairement le conteneur, on tape:
 
 ```
@@ -79,13 +82,13 @@ docker-compose down
 docker rmi oracle11g
 ```
 
-On peut aussi en faire une copie de sécurité par la commande:
+On peut faire une copie de sécurité du conteneur par la commande:
 
 ```
 docker export oracle11g -o oracle11g.tar
 ```
 
-On importe une copie par la commande:
+On importe ensuite une copie par la commande:
 
 ```
 docker import oracle11g.tar
