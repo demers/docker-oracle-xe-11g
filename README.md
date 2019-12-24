@@ -81,6 +81,18 @@ docker-compose down
 docker rmi oracle11g
 ```
 
+On peut aussi en faire une copie de sécurité par la commande:
+
+```
+docker export oracle11g -o oracle11g.tar
+```
+
+On importe une copie par la commande:
+
+```
+docker import oracle11g.tar
+```
+
 # Comment se connecter à Oracle par SQLPlus de l'intérieur du conteneur
 
 Quand vous êtes connecté au conteneur, pour accéder à la console Oracle, on tape simplement:
