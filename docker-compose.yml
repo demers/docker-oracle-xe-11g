@@ -12,7 +12,8 @@ services:
       - "22:22"
       - "49161:1521"
       - "27017:27017"
-    network_mode: "host"
+    # A de'commenter pour Linux Ubuntu
+    # network_mode: "host"
 
 volumes:
   data_work:

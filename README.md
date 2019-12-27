@@ -37,9 +37,37 @@ Voici les caractéristiques du conteneur contruit ici:
 
 Vous devez avoir sur votre système:
 
+- Windows Pro et Education (si vous êtes sous Windows)
+- Linux (même choix que Windows pour Docker)
+- Hyper-V (si vous êtes sous Windows 10)
+- Chocolatey (si vous êtes sous Windows 10)
 - Docker 17+
 - Docker compose 2+
 - Au moins 3,5 Go d'espace disque.
+
+# Comment installer Docker et Docker-compose sous Windows
+
+Il faut d'abord activer Hyper-V.  Voir https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v
+
+On installe Docker en suivant les étapes de: https://runnable.com/docker/install-docker-on-windows-10
+
+On installe Chocolatey par les étapes de: https://chocolatey.org/install
+(redémarrer votre console PS)
+
+On installe Git par la commande suivante:
+
+```
+choco install git
+```
+
+On installe Docker-compose en suivant les étapes de: https://docs.docker.com/compose/install/#install-compose
+(section Windows Server)
+
+On installe Putty
+
+```
+choco install putty
+```
 
 # Comment installer ce projet Docker sur votre ordinateur
 
