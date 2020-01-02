@@ -164,7 +164,7 @@ sqlplus SYSTEM/oracle@//localhost:1521/XE
 sqlplus SYSTEM/oracle@//11.22.33.44:1521/XE
 ```
 
-# Comment tester le programme Java
+# Comment tester le programme Java dans le conteneur
 
 On compile le programme `JdbcOracleConnection.java`:
 
@@ -177,7 +177,7 @@ On exécute le programme `JdbcOracleConnection`:
 java -cp classpath/ojdbc6.jar:. JdbcOracleConnection
 ```
 
-# Comment tester le programme Python 3
+# Comment tester le programme Python 3 dans le conteneur
 
 Pour tester le programme `oracleConnection.py`, on exécute le code simplement
 comme suit:
@@ -185,6 +185,20 @@ comme suit:
 ```
 python3 oracleConnection.py
 ```
+
+# Comment installer SQL Developer
+
+Voir https://www.oracle.com/tools/downloads/sqldev-downloads.html
+
+Il se peut que vous ayez besoin de Oracle Java 8 sur votre ordinateur...
+(vérification à venir...)
+
+Si vous l'installez sous Ubuntu 18.04 ou un équivalent, il vous faut absolument
+OpenJDK 8 et vous devez installer JavaFX suivant la [procédure suivante](https://github.com/JabRef/user-documentation/issues/204).
+
+## Comment utiliser SQL Developer avec le conteneur
+
+À venir...
 
 # Comment se connecter au serveur MongoDB
 
