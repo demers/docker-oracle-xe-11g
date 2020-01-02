@@ -197,8 +197,10 @@ Si vous l'installez sous Ubuntu 18.04 ou un équivalent, il vous faut
 OpenJDK 8 et vous devez installer JavaFX par la commande:
 
 ```
-sudo apt install openjdk-8-jdk
+sudo apt install openjdk-8-jdk openjdk-8-jre
 ```
+
+Voir plus d'info à https://tecadmin.net/install-oracle-java-8-ubuntu-via-ppa/
 
 Vous devez aussi suivre la [procédure suivante](https://github.com/JabRef/user-documentation/issues/204).
 
