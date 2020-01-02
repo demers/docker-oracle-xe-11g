@@ -193,8 +193,14 @@ Voir https://www.oracle.com/tools/downloads/sqldev-downloads.html
 Il se peut que vous ayez besoin de Oracle Java 8 sur votre ordinateur...
 (vérification à venir...)
 
-Si vous l'installez sous Ubuntu 18.04 ou un équivalent, il vous faut absolument
-OpenJDK 8 et vous devez installer JavaFX suivant la [procédure suivante](https://github.com/JabRef/user-documentation/issues/204).
+Si vous l'installez sous Ubuntu 18.04 ou un équivalent, il vous faut
+OpenJDK 8 et vous devez installer JavaFX par la commande:
+
+```
+sudo apt install openjdk-8-jdk
+```
+
+Vous devez aussi suivre la [procédure suivante](https://github.com/JabRef/user-documentation/issues/204).
 
 ## Comment utiliser SQL Developer avec le conteneur
 
