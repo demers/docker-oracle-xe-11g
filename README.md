@@ -38,7 +38,7 @@ Voici les caractéristiques du conteneur contruit ici:
 Vous devez avoir sur votre système:
 
 - Windows Pro et Education (si vous êtes sous Windows)
-- Linux (même choix que Windows pour Docker)
+- Linux (meilleur choix que Windows pour Docker)
 - Hyper-V (si vous êtes sous Windows 10)
 - Chocolatey (si vous êtes sous Windows 10)
 - Docker 17+
@@ -191,7 +191,7 @@ python3 oracleConnection.py
 Voir https://www.oracle.com/tools/downloads/sqldev-downloads.html
 
 Il se peut que vous ayez besoin de Oracle Java 8 sur votre ordinateur...
-(vérification à venir...)
+Voir https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 Si vous l'installez sous Ubuntu 18.04 ou un équivalent, il vous faut
 OpenJDK 8 et vous devez installer JavaFX par la commande:
@@ -202,7 +202,7 @@ sudo apt install openjdk-8-jdk openjdk-8-jre
 
 Voir plus d'info à https://tecadmin.net/install-oracle-java-8-ubuntu-via-ppa/
 
-Vous devez aussi suivre la [procédure suivante](https://github.com/JabRef/user-documentation/issues/204).
+Vous devez aussi suivre la [procédure suivante](https://github.com/JabRef/user-documentation/issues/204) pour installer JavaFX.
 
 ## Comment utiliser SQL Developer avec le conteneur
 
