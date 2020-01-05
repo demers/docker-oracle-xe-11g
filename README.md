@@ -19,7 +19,7 @@ Voici les caractéristiques du conteneur contruit ici:
 
 # Java
 
-- Java Oracle version 13 installé (commande `javac` pour compiler et `java` pour exécuter
+- Java Oracle version 13 installé (commande `javac` pour compiler et `java` pour exécuter)
 - Pilote `ojdbc6.jar` installé pour permettre un accès aux BD Oracle par un programme Java
 
 # Python
@@ -81,22 +81,24 @@ cd docker-oracle-xe-11g
 docker-compose up -d
 ```
 
-Vous pouvez vous connecter au conteneur par SSH.  Sous Linux, on tape
+Vous pouvez vous connecter au conteneur par [Putty](https://www.putty.org/) et utiliser
+le nom du serveur localhost pour le port 22.
+
+
+Si vous êtes sous Linux, on tape
 
 ```
 ssh -l ubuntu localhost
 ```
 
-Sous Windows, vous devez installer [Putty](https://www.putty.org/) et utiliser
-le nom du serveur localhost pour le port 22.
-
-Pour arrêter temporairement le conteneur, on tape:
+Pour arrêter temporairement le conteneur (par exemple, à la fin de votre
+travail), on tape:
 
 ```
 docker-compose stop
 ```
 
-On redémarre le conteneur arrêté par:
+On redémarre le conteneur arrêté (pour reprendre vos travaux) par:
 
 ```
 docker-compose start
@@ -110,7 +112,8 @@ docker-compose down
 docker rmi oracle11g
 ```
 
-On peut faire une copie de sécurité du conteneur par la commande:
+On peut faire une copie de sécurité du conteneur par la commande (3 Go au moins
+du fichier généré):
 
 ```
 docker export oracle11g -o oracle11g.tar
@@ -124,7 +127,7 @@ docker import oracle11g.tar
 
 # Comment se connecter à Oracle par SQLPlus de l'intérieur du conteneur
 
-Quand vous êtes connecté au conteneur, pour accéder à la console Oracle, on tape simplement:
+Quand vous êtes connecté au conteneur (par Putty ou SSH), pour accéder à la console Oracle, on tape simplement:
 
 ```
 sqlplus
@@ -144,7 +147,7 @@ Si on veut se connecter directement au compte SYSTEM, on tape le raccourci
 sp
 ```
 
-Le programme `rlwrap` est utilisé pour obtenir un historique par la flèche vers
+N.B.: Le programme `rlwrap` est utilisé pour obtenir un historique par la flèche vers
 le haut.
 
 # Comment se connecter à Oracle par SQLPlus de l'extérieur du conteneur
@@ -188,10 +191,16 @@ python3 oracleConnection.py
 
 # Comment installer SQL Developer
 
-Voir https://www.oracle.com/tools/downloads/sqldev-downloads.html
+## Sous Windows 10
 
-Il se peut que vous ayez besoin de Oracle Java 8 sur votre ordinateur...
-Voir https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+Téléchargez le choix avec JDK 8 inclus à https://www.oracle.com/tools/downloads/sqldev-downloads.html
+
+Vous décompressez par exemple dans `C:\SQLDeveloper` et vous exécutez
+l'exécutable dans le dossier.
+
+Si vous avez des problèmes, consultez https://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/sqldev-install-windows-1969674.html
+
+## Ubuntu
 
 Si vous l'installez sous Ubuntu 18.04 ou un équivalent, il vous faut
 OpenJDK 8 et vous devez installer JavaFX par la commande:
@@ -206,7 +215,10 @@ Vous devez aussi suivre la [procédure suivante](https://github.com/JabRef/user-
 
 ## Comment utiliser SQL Developer avec le conteneur
 
-À venir...
+Après installation sans erreur de SQL Developer, créez une nouvelle connexion en utilisant le nom
+d'utilisateur `SYSTEM` et mot de passe `oracle`.  Le nom de l'hôte est
+`localhost` et le port est 49616.  Le SID est `xe`.  Il n'y a rien d'autre
+à changer.
 
 # Comment se connecter au serveur MongoDB
 
