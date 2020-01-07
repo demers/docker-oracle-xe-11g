@@ -47,7 +47,18 @@ Vous devez avoir sur votre système:
 
 # Comment installer Docker et Docker-compose sous Windows
 
-Il faut d'abord activer Hyper-V.  Voir https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v
+ATTENTION: Vous devez Windows PRO ou Education.  Sinon, faites le passage à PRO
+par exemple, voir cette méthode https://www.lifewire.com/upgrade-windows-10-home-to-pro-4178259
+
+Il faut d'abord activer Hyper-V.  Voir https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v ou https://www.poweronplatforms.com/enable-disable-hyper-v-windows-10-8/
+
+Il suffit d'exécuter la commande Powershell suivante:
+
+```
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+Il faut redémarrer l'ordinateur après.
 
 On installe Docker en suivant les étapes de: https://runnable.com/docker/install-docker-on-windows-10
 
@@ -63,7 +74,7 @@ choco install git
 On installe Docker-compose en suivant les étapes de: https://docs.docker.com/compose/install/#install-compose
 (section Windows Server)
 
-On installe Putty
+On installe enfin Putty
 
 ```
 choco install putty
@@ -124,6 +135,16 @@ On importe ensuite une copie par la commande:
 ```
 docker import oracle11g.tar
 ```
+
+# Comment installer SQL Plus client sur votre ordinateur
+
+## Windows
+
+Voir les explications à https://www.oratable.com/sqlplus-instant-client-installation/
+
+## Ubuntu
+
+Voir les explications à https://webikon.com/cases/installing-oracle-sql-plus-client-on-ubuntu
 
 # Comment se connecter à Oracle par SQLPlus de l'intérieur du conteneur
 
