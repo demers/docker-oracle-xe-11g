@@ -141,11 +141,11 @@ RUN cd ${WORKDIRECTORY} \
     && mkdir work \
     && chown -R $USERNAME:$PASSWORD work .bash_profile .pyenv
 
+EXPOSE 27017
+
 # Installer MongoDB
 RUN apt-get update
 RUN apt install -y mongodb
-
-EXPOSE 27017
 
 ADD start.sh /
 RUN chmod +x /start.sh
