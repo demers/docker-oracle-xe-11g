@@ -93,13 +93,13 @@ docker-compose up -d
 ```
 
 Vous pouvez vous connecter au conteneur par [Putty](https://www.putty.org/) et utiliser
-le nom du serveur localhost pour le port 22.
+le nom du serveur localhost pour le port 2222 (pas 22).
 
 
 Si vous êtes sous Linux, on tape
 
 ```
-ssh -l ubuntu localhost
+ssh -p 2222 -l ubuntu localhost
 ```
 
 Pour arrêter temporairement le conteneur (par exemple, à la fin de votre
