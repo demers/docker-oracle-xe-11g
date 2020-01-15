@@ -15,7 +15,7 @@ Voici les caractéristiques du conteneur contruit ici:
 - Le mot de passe `SYSTEM` et `SYS` est `oracle`
 - Console ligne de commande Bash et Fish
 - Application SQLPlus installé
-- Ports 1521 ouvert pour une connection `localhost` avec SQLPlus local ou par SQLDeveloper
+- Ports 49161 ouvert pour une connection `localhost` avec SQLPlus local ou par SQLDeveloper
 
 # Java
 
@@ -179,13 +179,13 @@ Si votre conteneur s'exécute localement sur votre ordinateur et que vous avez
 installé SQLPlus ([voir](https://www.oratable.com/sqlplus-instant-client-installation/) pour Windows ou [voir](https://askubuntu.com/questions/159939/how-to-install-sqlplus) pour Ubuntu 18.04), faites la commande:
 
 ```
-sqlplus SYSTEM/oracle@//localhost:1521/XE
+sqlplus SYSTEM/oracle@//localhost:49161/XE
 ```
 
 ## Le conteneur s'exécute à l'extérieur sur un serveur à l'adresse 11.22.33.44
 
 ```
-sqlplus SYSTEM/oracle@//11.22.33.44:1521/XE
+sqlplus SYSTEM/oracle@//11.22.33.44:49161/XE
 ```
 
 # Comment tester le programme Java dans le conteneur
@@ -238,7 +238,7 @@ Vous devez aussi suivre la [procédure suivante](https://github.com/JabRef/user-
 
 Après installation sans erreur de SQL Developer, créez une nouvelle connexion en utilisant le nom
 d'utilisateur `SYSTEM` et mot de passe `oracle`.  Le nom de l'hôte est
-`localhost` et le port est 49616.  Le SID est `xe`.  Il n'y a rien d'autre
+`localhost` et le port est 49161.  Le SID est `xe`.  Il n'y a rien d'autre
 à changer.
 
 # Comment se connecter au serveur MongoDB

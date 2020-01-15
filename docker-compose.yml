@@ -7,12 +7,12 @@ services:
     volumes:
       - "data_work:/home/ubuntu/work"
       - "/home/demers/share:/home/ubuntu/share"
-    #restart: always
+    restart: always
     ports:
       - "2222:22"
       - "49161:1521"
       - "27017:27017"
-    # A de'commenter pour Linux Ubuntu
+    # A de'commenter pour Linux Ubuntu si ne'cessaire
     # network_mode: "host"
     # A de'commenter pour Linux Ubuntu sur le cloud
     # network_mode: "bridge"
