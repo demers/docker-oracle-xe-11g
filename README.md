@@ -38,11 +38,13 @@ Voici les caractéristiques du conteneur contruit ici:
 Vous devez avoir sur votre système:
 
 - Windows Pro et Education (si vous êtes sous Windows)
-- Linux (meilleur choix que Windows pour Docker)
+- (optionnel) Linux (meilleur choix que Windows pour Docker)
 - Chocolatey (si vous êtes sous Windows 10)
 - Docker 17+
 - Docker compose 2+
-- Au moins 3,5 Go d'espace disque.
+- Au moins 3,5 Go d'espace disque
+- Désactiver votre parefeu
+- Désactiver votre antivirus.
 
 # Comment installer Docker et Docker-compose sous Windows
 
