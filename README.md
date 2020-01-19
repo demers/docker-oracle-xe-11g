@@ -82,11 +82,8 @@ cd docker-oracle-xe-11g
 docker-compose up -d
 ```
 
-Vous pouvez vous connecter au conteneur par [Putty](https://www.putty.org/) et utiliser
+Vous pouvez vous connecter au conteneur par SSH et utiliser
 le nom du serveur localhost pour le port 2222 (pas 22).
-
-
-Si vous êtes sous Linux, on tape
 
 ```
 ssh -p 2222 -l ubuntu localhost
