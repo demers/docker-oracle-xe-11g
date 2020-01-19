@@ -1,0 +1,18 @@
+version: '2.1'
+
+services:
+  oracle11g:
+    image: demers/docker-oracle-xe-11g
+    container_name: oracle11g
+    volumes:
+      - "data_work:/home/ubuntu/work"
+      - "/home/demers/share:/home/ubuntu/share"
+    restart: always
+    ports:
+      - "2222:22"
+      - "49161:1521"
+      - "27000:27017"
+    network_mode: "bridge"
+
+volumes:
+  data_work:
