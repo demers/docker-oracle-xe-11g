@@ -5,8 +5,8 @@ Ce projet est basé sur https://github.com/wnameless/docker-oracle-xe-11g
 Voici les caractéristiques du conteneur contruit ici:
 
 - Ubuntu 18.04+
-- Serveur SSH pour se connecter par SSH ou Putty
-- Accès SSH au conteneur (par Putty par exemple), nom d'utilisateur `ubuntu` et mot de passe `ubuntu`
+- Serveur SSH pour se connecter par SSH
+- Accès SSH au conteneur, nom d'utilisateur `ubuntu` et mot de passe `ubuntu`
 - Éditeur de programmation Vim et Nano installés
 
 # Oracle
@@ -39,7 +39,6 @@ Vous devez avoir sur votre système:
 
 - Windows Pro et Education (si vous êtes sous Windows)
 - Linux (meilleur choix que Windows pour Docker)
-- Hyper-V (si vous êtes sous Windows 10)
 - Chocolatey (si vous êtes sous Windows 10)
 - Docker 17+
 - Docker compose 2+
@@ -50,17 +49,10 @@ Vous devez avoir sur votre système:
 ATTENTION: Vous devez Windows PRO ou Education.  Sinon, faites le passage à PRO
 par exemple, voir cette méthode https://www.lifewire.com/upgrade-windows-10-home-to-pro-4178259
 
-Il faut d'abord activer Hyper-V.  Voir https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v ou https://www.poweronplatforms.com/enable-disable-hyper-v-windows-10-8/
+Vous devez vous assurer que l'option de virtualisation dans votre BIOS est bien
+activée.
 
-Il suffit d'exécuter la commande Powershell suivante:
-
-```
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
-
-Il faut redémarrer l'ordinateur après.
-
-On installe Docker en suivant les étapes de: https://runnable.com/docker/install-docker-on-windows-10
+On installe Docker en suivant les étapes de: https://docs.docker.com/toolbox/toolbox_install_windows/
 
 On installe Chocolatey par les étapes de: https://chocolatey.org/install
 (redémarrer votre console PS)
@@ -74,11 +66,7 @@ choco install git
 On installe Docker-compose en suivant les étapes de: https://docs.docker.com/compose/install/#install-compose
 (section Windows Server)
 
-On installe enfin Putty
-
-```
-choco install putty
-```
+On active la commande SSH en suivant les étapes décrites dans ce guide: https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/
 
 # Comment installer ce projet Docker sur votre ordinateur
 
@@ -253,7 +241,7 @@ N.B.: Il faut installer [Chocolatey](https://chocolatey.org/packages/mongodb).
 choco install mongodb
 ```
 
-Il ne faut pas démarrer le serveur MongoDB.
+Il ne faut pas démarrer le serveur MongoDB.  Rien à faire ici.
 
 ## Ubuntu
 
@@ -273,13 +261,13 @@ sudo systemctl disable mongodb
 ## Le conteneur s'exécute localement sur votre ordinateur
 
 ```
-mongo 127.0.0.1:27017
+mongo 127.0.0.1:27000
 ```
 
 ## Le conteneur s'exécute à l'extérieur sur un serveur à l'adresse 11.22.33.44
 
 ```
-mongo 11.22.33.44:27017
+mongo 11.22.33.44:27000
 ```
 
 # D'autres conteneurs Oracle disponibles officiellement
