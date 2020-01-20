@@ -6,7 +6,7 @@ services:
     container_name: oracle11g
     volumes:
       - "data_work:/home/ubuntu/work"
-      - "/home/demers/share:/home/ubuntu/share"
+      - "share:/home/ubuntu/share"
     restart: always
     ports:
       - "2222:22"
