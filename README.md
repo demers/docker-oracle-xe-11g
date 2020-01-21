@@ -43,12 +43,12 @@ Vous devez avoir sur votre système:
 - Docker 17+
 - Docker compose 2+
 - Au moins 3,5 Go d'espace disque
-- Désactiver votre parefeu
-- Désactiver votre antivirus.
+- Désactiver votre antivirus
+- Désactiver votre parefeu.
 
 # Comment installer Docker et Docker-compose sous Windows
 
-ATTENTION: Vous devez Windows PRO ou Education.  Sinon, faites le passage à PRO
+ATTENTION: Vous devez avoir Windows PRO ou Education.  Sinon, faites le passage à PRO
 par exemple, voir cette méthode https://www.lifewire.com/upgrade-windows-10-home-to-pro-4178259
 
 Vous devez vous assurer que l'option de virtualisation dans votre BIOS est bien
@@ -56,7 +56,7 @@ activée.
 
 On installe Docker en suivant les étapes de: https://docs.docker.com/toolbox/toolbox_install_windows/
 
-On installe Chocolatey par les étapes de: https://chocolatey.org/install
+On installe Chocolatey par les étapes suivantes: https://chocolatey.org/install
 (redémarrer votre console PS)
 
 On installe Git par la commande suivante:
@@ -82,12 +82,22 @@ cd docker-oracle-xe-11g
 docker-compose up -d
 ```
 
+Si vous êtes sous Linux, il se peut que vous aillez à modifier le fichier
+docker-compose.yml pour décommenter la ligne suivante:
+
+```
+  # network_mode: "host"
+```
+
 Vous pouvez vous connecter au conteneur par SSH et utiliser
 le nom du serveur localhost pour le port 2222 (pas 22).
 
 ```
 ssh -p 2222 -l ubuntu localhost
 ```
+
+Si vous êtes sous Linux, il se peut que vous aillez à changer le port de 2222
+à 22.
 
 Pour arrêter temporairement le conteneur (par exemple, à la fin de votre
 travail), on tape:
@@ -169,6 +179,9 @@ installé SQLPlus ([voir](https://www.oratable.com/sqlplus-instant-client-instal
 sqlplus SYSTEM/oracle@//localhost:49161/XE
 ```
 
+Si vous êtes sous Linux, il se peut que vous aillez à changer le port 49161 pour
+1521.
+
 ## Le conteneur s'exécute à l'extérieur sur un serveur à l'adresse 11.22.33.44
 
 ```
@@ -228,6 +241,9 @@ d'utilisateur `SYSTEM` et mot de passe `oracle`.  Le nom de l'hôte est
 `localhost` et le port est 49161.  Le SID est `xe`.  Il n'y a rien d'autre
 à changer.
 
+Si vous êtes sous Linux, il se peut que vous aillez à changer le port 49161 pour
+1521.
+
 # Comment se connecter au serveur MongoDB
 
 ## Windows 10
@@ -262,6 +278,9 @@ sudo systemctl disable mongodb
 ```
 mongo 127.0.0.1:27000
 ```
+
+Si vous êtes sous Linux, il se peut que vous aillez à changer le port 27000 pour
+27017.
 
 ## Le conteneur s'exécute à l'extérieur sur un serveur à l'adresse 11.22.33.44
 
