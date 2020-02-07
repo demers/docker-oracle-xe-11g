@@ -54,7 +54,17 @@ par exemple, voir cette méthode https://www.lifewire.com/upgrade-windows-10-hom
 Vous devez vous assurer que l'option de virtualisation dans votre BIOS est bien
 activée.
 
-On installe Docker en suivant les étapes de: https://docs.docker.com/toolbox/toolbox_install_windows/
+Il faut d'abord activer Hyper-V.  Voir https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v ou https://www.poweronplatforms.com/enable-disable-hyper-v-windows-10-8/
+
+Il suffit d'exécuter la commande Powershell suivante:
+
+```
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+Il faut redémarrer l'ordinateur après.
+
+On installe Docker en suivant les étapes de: https://runnable.com/docker/install-docker-on-windows-10
 
 On installe Chocolatey par les étapes suivantes: https://chocolatey.org/install
 (redémarrer votre console PS)
@@ -66,13 +76,13 @@ choco install git
 ```
 
 On installe Docker-compose en suivant les étapes de: https://docs.docker.com/compose/install/#install-compose
-(section Windows Server)
+(section Windows Server est le plus rapide)
 
 On active la commande SSH en suivant les étapes décrites dans ce guide: https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/
 
 # Comment installer ce projet Docker sur votre ordinateur
 
-Vous devez ouvrir une console Bash ou Powershell et exécuter:
+Vous devez ouvrir une console Bash (pour Linux) ou Powershell (pour Windows) et exécuter:
 
 ```
 git clone https://github.com/demers/docker-oracle-xe-11g.git
