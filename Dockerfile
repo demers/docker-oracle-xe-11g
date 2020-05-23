@@ -50,7 +50,7 @@ RUN echo "export DISPLAY=:0.0" >> /root/.bash_profile
 
 RUN echo "export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe" >> ${WORKDIRECTORY}/.bash_profile
 
-RUN echo "export PATH=\$ORACLE_HOME/bin:$PATH" >> ${WORKDIRECTORY}/.bash_profile
+RUN echo "export PATH=\$ORACLE_HOME/bin:\$PATH" >> ${WORKDIRECTORY}/.bash_profile
 
 RUN echo "export ORACLE_SID=XE" >> ${WORKDIRECTORY}/.bash_profile
 
@@ -113,6 +113,8 @@ RUN echo "export CLASSPATH=.:/usr/lib/jvm/java-13-oracle/lib:/home/ubuntu/classp
 RUN echo "JAVA_HOME=/usr/lib/jvm/java-13-oracle/" >> /etc/environment
 RUN echo "CLASSPATH=.:/usr/lib/jvm/java-13-oracle/lib:/home/ubuntu/classpath" >> /etc/environment
 
+RUN echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ${WORKDIRECTORY}/.bash_profile
+
 # Installation Python 3
 RUN apt install -y git python3 python3-pip python3-mock python3-tk
 # Mise à jour PIP
@@ -124,7 +126,7 @@ ENV PYTHONIOENCODING=utf-8
 
 RUN git clone https://github.com/pyenv/pyenv.git ${WORKDIRECTORY}/.pyenv
 RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ${WORKDIRECTORY}/.bash_profile
-RUN echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ${WORKDIRECTORY}/.bash_profile
+RUN echo 'export PATH="\$PYENV_ROOT/bin:\$PATH"' >> ${WORKDIRECTORY}/.bash_profile
 RUN echo 'eval "$(pyenv init -)"' >> ${WORKDIRECTORY}/.bash_profile
 
 # Installation du pilote Oracle pour Python 3
